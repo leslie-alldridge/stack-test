@@ -1,7 +1,4 @@
 import * as actions from "../../../src/actions/getOne";
-import axios from "axios";
-import MockAdapter from "axios-mock-adapter";
-import configureMockStore from "redux-mock-store";
 
 describe("loading action", () => {
   it("loading action", () => {
