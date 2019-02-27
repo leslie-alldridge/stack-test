@@ -1,10 +1,10 @@
-import request from "superagent";
+import axios from "axios";
 
 // This will make an API request to delete cat by id, while telling redux its loading and what response comes back
 export function deleteOneAction(id) {
   return function(dispatch) {
     dispatch(loading()); //redux please go to loading state while we do our API call
-    request.delete(`/api/v1/cats/delete/${id}`).then(response => {
+    return axios.delete(`/api/v1/cats/delete/${id}`).then(response => {
       if (!response.status == 200) {
         dispatch(errorMessage(response.status)); //if DB fails or is down, this error runs through redux
       } else {
