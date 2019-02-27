@@ -2,11 +2,8 @@ import * as actions from "../../../src/actions/saveOne";
 import nock from "nock";
 
 test("save cats", () => {
-  const scope = nock("http://localhost")
-    .post("/api/v1/cats/save")
-    .reply(200, [
-      { data: { id: 1, name: "leslie", location: "wellington", age: 26 } }
-    ]);
+  const scope = nock("http://localhost/api/v1/cats/save/")
+  .post('').reply(200)
 
   const dispatch = jest.fn();
 

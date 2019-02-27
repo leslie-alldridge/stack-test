@@ -3,14 +3,10 @@ import nock from "nock";
 
 test("save cats", () => {
   const scope = nock("http://localhost")
-    .intercept("/user/removeuserskills", "DELETE", {
-      email: "Johny@gmail.com",
-      user_skill: "accoutant"
-    })
-    .reply(200, {
-      status: 200,
-      message: "200: Successfully deleted skill"
-    });
+    .delete("/api/v1/cats/delete/1")
+    .reply(200, [
+      { data: { id: 1, name: "leslie", location: "wellington", age: 26 } }
+    ]);
 
   const dispatch = jest.fn();
 
