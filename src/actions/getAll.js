@@ -1,10 +1,9 @@
-import axios from "axios";
-
+import request from "superagent";
 // This will make an API request to get all cats, while telling redux its loading and what response comes back
 export function getAllAction() {
   return function(dispatch) {
     dispatch(loading());
-    axios.get("/api/v1/cats/").then(response => {
+    return request.get("/api/v1/cats/").then(response => {
       if (!response.status === 200) {
         dispatch(errorMessage(response.status));
       } else {
@@ -29,10 +28,10 @@ export function errorMessage(err) {
   };
 }
 
-export function receiveCats(cats) {
+export const receiveCats = cats => {
   return {
     type: "SUCCESS",
     isFetching: false,
     cats
   };
-}
+};

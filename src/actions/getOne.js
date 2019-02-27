@@ -1,10 +1,10 @@
-import axios from "axios";
+import request from "superagent";
 
 // This will make an API request to get cat by id, while telling redux its loading and what response comes back
 export function getOneAction(id) {
   return function(dispatch) {
     dispatch(loading());
-    axios.get(`/api/v1/cats/${id}`).then(response => {
+    request.get(`/api/v1/cats/${id}`).then(response => {
       if (response.data[0] == null) {
         //if no cats come back from DB that means none exist with that ID
         dispatch(errorMessage("no cat found"));
