@@ -1,4 +1,4 @@
-import * as actions from "../../../src/actions/deleteOne";
+import * as actions from "../../../src/actions/saveOne";
 
 describe("loading action", () => {
   it("loading action", () => {

@@ -21,7 +21,7 @@ export function editOneAction(id, name, age, location) {
   };
 }
 
-function loading() {
+export function loading() {
   return {
     type: "LOADING",
     isFetching: true
@@ -30,7 +30,7 @@ function loading() {
 
 //using error message2 so it doesn't conflict with getOne. Otherwise both of my components will display errors
 //this is why we normally split out reducers and components so there's no overlap (my app renders every single component at once)
-function errorMessage2(err2) {
+export function errorMessage2(err2) {
   return {
     type: "ERROR2",
     isFetching: false,
@@ -38,7 +38,7 @@ function errorMessage2(err2) {
   };
 }
 
-function receiveCats(cats) {
+export function receiveCats(cats) {
   return {
     type: "SUCCESS",
     isFetching: false,

@@ -15,14 +15,14 @@ export function getOneAction(id) {
   };
 }
 
-function loading() {
+export function loading() {
   return {
     type: "LOADING",
     isFetching: true
   };
 }
 
-function errorMessage(err) {
+export function errorMessage(err) {
   return {
     type: "ERROR",
     isFetching: false,
@@ -30,7 +30,7 @@ function errorMessage(err) {
   };
 }
 
-function receiveCats(cats) {
+export function receiveCats(cats) {
   return {
     type: "SUCCESS",
     isFetching: false,

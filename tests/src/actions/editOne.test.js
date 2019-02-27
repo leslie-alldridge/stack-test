@@ -1,4 +1,4 @@
-import * as actions from "../../../src/actions/deleteOne";
+import * as actions from "../../../src/actions/editOne";
 
 describe("loading action", () => {
   it("loading action", () => {
@@ -12,18 +12,18 @@ describe("loading action", () => {
 
 describe("error message", () => {
   it("error message", () => {
-    const err = "error";
+    const err2 = "error";
     const expectedAction = {
-      type: "ERROR",
+      type: "ERROR2",
       isFetching: false,
-      err
+      err2
     };
-    expect(actions.errorMessage("error")).toEqual(expectedAction);
+    expect(actions.errorMessage2("error")).toEqual(expectedAction);
   });
 });
 
 describe("receive cats", () => {
-  it("receives cats", () => {
+  it("receive cats", () => {
     const cats = {
       id: 1,
       name: "leslie",
