@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "axios-mock-adapter": "^1.16.0",
     "babel-loader": "^8.0.5",
     "cors": "^2.8.5",
     "css-loader": "^2.1.0",

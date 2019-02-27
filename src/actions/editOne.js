@@ -1,5 +1,4 @@
-import request from "superagent";
-
+import axios from "axios";
 // This will make an API request to edit cat by id, while telling redux its loading and what response comes back
 export function editOneAction(id, name, age, location) {
   //create object to send with out post request!
@@ -11,7 +10,7 @@ export function editOneAction(id, name, age, location) {
   };
   return function(dispatch) {
     dispatch(loading());
-    request.post(`/api/v1/cats/edit/:id`, data).then(response => {
+    axios.post(`/api/v1/cats/edit/:id`, data).then(response => {
       if (response.data.length == 0) {
         dispatch(errorMessage2("No cat with that ID")); //we can send the knex error from our backend which is preferred - stretch goal for you!
       } else {
