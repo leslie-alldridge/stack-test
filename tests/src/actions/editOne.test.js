@@ -1,8 +1,4 @@
 import * as actions from "../../../src/actions/editOne";
-import nock from "nock";
-import axios from "axios";
-var MockAdapter = require("axios-mock-adapter");
-var mock = new MockAdapter(axios);
 
 describe("loading action", () => {
   it("loading action", () => {
