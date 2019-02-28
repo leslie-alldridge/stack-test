@@ -1,5 +1,5 @@
-import DeleteOne from '../../../src/components/DeleteOne'
+import DeleteOne from "../../../src/components/DeleteOne";
 
-it('renders without crashing', () => {
-    expect(JSON.stringify(DeleteOne)).toMatchSnapshot();
-  });
+it("renders without crashing", () => {
+  expect(JSON.stringify(DeleteOne)).toMatchSnapshot();
+});
