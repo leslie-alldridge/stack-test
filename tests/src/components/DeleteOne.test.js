@@ -1,7 +1,8 @@
 import React from "react";
-import DeleteOne from "../../../src/components/DeleteOne";
+import { DeleteOne } from "../../../src/components/DeleteOne";
 import { shallow, mount } from "enzyme";
 import "../../../setup.js";
+import sinon from "sinon";
 
 const clickFn = jest.fn();
 
@@ -19,28 +20,22 @@ describe("<DeleteOne />", () => {
     wrap.setState({ num: 1 });
     expect(wrap.state("num")).toEqual(1);
   });
+});
 
-  it("button click should run function", () => {
-    beforeEach(() => {
-      const component = mount(<DeleteOne onClick={clickFn} />);
-      component
-        .findWhere(node => node.innerText === "Delete")
-        .simulate("click");
-      expect(clickFn).toHaveBeenCalled();
-    });
+describe("<DeleteOne />", () => {
+  it("responds to name change", () => {
+    const handleChangeSpy = sinon.spy(DeleteOne.prototype, "handleChange");
+    const event = { target: { name: "num", value: 2 } };
+    const wrap = mount(<DeleteOne />);
+    wrap.find("input").simulate("change", event);
+    expect(handleChangeSpy.calledOnce).toEqual(true);
   });
 
-  // it("Updates the state", () => {
-  //   const num2 = 2;
-  //   const wrapper = shallow(
-  //     <Provider store={store}>
-  //       <DeleteOne />
-  //     </Provider>
-  //   );
-  //   const input = wrapper.find("input");
-
-  //   input.simulate("change", { target: { num: num2 } });
-
-  //   expect(wrapper.state().num).toEqual(num2);
-  // });
+  it("button click should run function", () => {
+    const deleteOneSpy = sinon.spy(DeleteOne.prototype, "deleteOne");
+    const event = { target: { name: "num", value: 2 } };
+    const wrap = mount(<DeleteOne deleteOne={clickFn} />);
+    wrap.find("button").simulate("click", event);
+    expect(deleteOneSpy.calledOnce).toEqual(true);
+  });
 });

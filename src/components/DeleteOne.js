@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { deleteOneAction } from "../actions/deleteOne";
 
-class DeleteOne extends Component {
+export class DeleteOne extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,15 +10,20 @@ class DeleteOne extends Component {
     };
   }
 
-  deleteOne = () => {
-    this.props.deleteOne(this.state.num);
-  };
+  componentWillMount() {
+    this.deleteOne = this.deleteOne.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-  handleChange = e => {
+  deleteOne() {
+    this.props.deleteOne(this.state.num);
+  }
+
+  handleChange(e) {
     this.setState({
       num: e.target.value
     });
-  };
+  }
 
   render() {
     return (
