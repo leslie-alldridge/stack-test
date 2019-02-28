@@ -1,5 +1,4 @@
 import * as actions from "../../../src/actions/saveOne";
-import nock from "nock";
 
 describe("loading action", () => {
   it("loading action", () => {
