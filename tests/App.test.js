@@ -4,6 +4,10 @@ import "../setup.js";
 
 import App from "../src/App";
 
+it('renders without crashing', () => {
+  expect(JSON.stringify(App)).toMatchSnapshot();
+});
+
 describe("<App />", () => {
   test("renders without crashing", () => {
     shallow(<App />);
