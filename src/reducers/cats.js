@@ -15,6 +15,7 @@ const initialState = {
 export default function cats(state = initialState, action) {
   switch (action.type) {
     case "LOADING":
+    case "LOADING_DEL":
       return {
         ...state,
         loading: action.isFetching,

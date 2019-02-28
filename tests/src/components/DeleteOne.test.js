@@ -1,9 +1,11 @@
 import React from "react";
-import { DeleteOne } from "../../../src/components/DeleteOne";
+import DeleteContainer, { DeleteOne, mapDispatchToProps } from "../../../src/components/DeleteOne";
 import { shallow, mount } from "enzyme";
+import {loading, deleteOneAction} from '../../../src/actions/deleteOne'
 import "../../../setup.js";
 import sinon from "sinon";
-
+import configureMockStore from 'redux-mock-store';
+const mockStore = configureMockStore();
 const clickFn = jest.fn();
 
 it("renders without crashing", () => {
@@ -37,5 +39,14 @@ describe("<DeleteOne />", () => {
     const wrap = mount(<DeleteOne deleteOne={clickFn} />);
     wrap.find("button").simulate("click", event);
     expect(deleteOneSpy.calledOnce).toEqual(true);
+  });
+});
+
+describe('mapDispatchToProps', () => {
+  it('should dispatch actions.onClick() when onClick() is called', () => {
+    const dispatch = jest.fn();
+    const props = mapDispatchToProps(dispatch);
+    props.deleteOne();
+    expect(dispatch.mock.calls.length).toBe(1); 
   });
 });
