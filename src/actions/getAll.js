@@ -4,7 +4,7 @@ export function getAllAction() {
   return function(dispatch) {
     dispatch(loading());
     return axios.get("/api/v1/cats/").then(response => {
-      if (!response.status === 200) {
+      if (!response.data) {
         dispatch(errorMessage(response.status));
       } else {
         dispatch(receiveCats(response.data));

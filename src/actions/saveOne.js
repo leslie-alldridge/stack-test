@@ -9,7 +9,7 @@ export function saveOneAction(name, age, location) {
   return function(dispatch) {
     dispatch(loading());
     return axios.post(`/api/v1/cats/save`, data).then(response => {
-      if (!response.status == 200) {
+      if (!response.data ) {
         dispatch(errorMessage(response.status));
       } else {
         dispatch(receiveCats(response.data));
