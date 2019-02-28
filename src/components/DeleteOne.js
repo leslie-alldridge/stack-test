@@ -29,7 +29,9 @@ class DeleteOne extends Component {
           type="number"
           placeholder="enter id here"
         />
-        <button onClick={this.deleteOne}>Delete</button>
+        <button id="deleteBtn" onClick={this.deleteOne}>
+          Delete
+        </button>
       </div>
     );
   }
