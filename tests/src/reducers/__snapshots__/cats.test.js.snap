@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cat reducer handles the error action 1`] = `
+Object {
+  "err": "error",
+  "err2": undefined,
+  "loading": false,
+}
+`;
+
+exports[`cat reducer handles the loading action 1`] = `
+Object {
+  "err": null,
+  "err2": null,
+  "loading": true,
+}
+`;
+
+exports[`cat reducer handles the loading action 2`] = `
+Object {
+  "catData": Array [
+    Object {
+      "age": 32,
+      "id": 1,
+      "location": "nz",
+      "name": "tester",
+    },
+  ],
+  "err": null,
+  "err2": null,
+  "loading": false,
+}
+`;
+
+exports[`cat reducer returns the initial state 1`] = `
+Object {
+  "catData": Array [],
+  "loading": false,
+}
+`;
