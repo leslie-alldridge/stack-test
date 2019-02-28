@@ -29,4 +29,27 @@ describe("cat reducer", () => {
   it("handles the loading action", () => {
     expect(cats({}, receiveCats(catData))).toMatchSnapshot();
   });
+
+  it("should return the correct constant", () => {
+    expect(loading()).toEqual({
+      type: "LOADING",
+      isFetching: true
+    });
+  });
+
+  it("should return the correct constant", () => {
+    expect(errorMessage("error")).toEqual({
+      type: "ERROR",
+      isFetching: false,
+      err: "error"
+    });
+  });
+
+  it("should return the correct constant", () => {
+    expect(receiveCats(catData)).toEqual({
+      type: "SUCCESS",
+      isFetching: false,
+      cats: catData
+    });
+  });
 });
