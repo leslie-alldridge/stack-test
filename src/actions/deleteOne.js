@@ -4,8 +4,8 @@ import axios from "axios";
 export function deleteOneAction(id) {
   return function(dispatch) {
     dispatch(loading()); //redux please go to loading state while we do our API call
-    return axios.delete(`/api/v1/cats/delete/${id}`).then(response => {
-      if (!response.status == 200) {
+    return axios.delete(`/api/v1/cats/delete/${id}`).then(response => {      
+      if (!response.data) {
         dispatch(errorMessage(response.status)); //if DB fails or is down, this error runs through redux
       } else {
         dispatch(receiveCats(response.data)); //we received data back successfully, tell redux
