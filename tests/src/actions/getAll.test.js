@@ -40,7 +40,7 @@ describe("receive cats", () => {
   });
 });
 
-test("fetching cats", () => {
+test("fetching all cats", () => {
   const scope = nock("http://localhost")
     .get("/api/v1/cats/")
     .reply(200, [
@@ -61,7 +61,7 @@ test("fetching cats", () => {
     });
 });
 
-test("fetching cats error", () => {
+test("fetching all cats error", () => {
   const scope = nock("http://localhost")
     .get("/api/v1/cats/")
     .reply(200);

@@ -22,12 +22,6 @@ describe("<SaveOne />", () => {
     expect(wrap.state("error")).toEqual(false);
   });
 
-  // it("sets state properly", () => {
-  //   const wrap = shallow(<SaveOne />);
-  //   wrap.setState({ name: "", age: "", location: "", error: "" });
-  //   expect(wrap.state("error")).toEqual(true);
-  // });
-
   describe("<DeleteOne />", () => {
     it("responds to name change", () => {
       const handleChangeSpy = sinon.spy(SaveOne.prototype, "handleChange");
@@ -103,23 +97,6 @@ describe("<SaveOne />", () => {
       });
     });
 
-    // it("button click should run function", () => {
-    //   const handleChangeSpy = sinon.spy(SaveOne.prototype, "save");
-    //   const event = { target: { name: "num", value: 2 } };
-    //   const wrap = mount(<SaveOne />);
-    //   wrap.find("button").simulate("click", event);
-    //   expect(handleChangeSpy.calledOnce).toEqual(true);
-    //   wrap.setState({ age: "" });
-
-    //   //expect(SaveOneSpy.calledOnce).toEqual(true);
-    //   expect(wrap.state()).toEqual({
-    //     name: test,
-    //     age: 2,
-    //     location: "",
-    //     error: true
-    //   });
-    // });
-
     describe("mapDispatchToProps", () => {
       it("should dispatch actions.onClick() when onClick() is called", () => {
         const dispatch = jest.fn();
@@ -128,13 +105,5 @@ describe("<SaveOne />", () => {
         expect(dispatch.mock.calls.length).toBe(1);
       });
     });
-
-    // describe("state error", () => {
-    //   const wrap = shallow(<SaveOne state={{ cats: { err2: "err" } }} />);
-    //   wrap.setState({ id: 0, name: "", age: 0, location: "", error: true });
-    //   expect(
-    //     wrap.containsMatchingElement(<p>please fill out all details</p>)
-    //   ).toBeTruthy();
-    // });
   });
 });

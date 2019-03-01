@@ -11,7 +11,7 @@ it("renders without crashing", () => {
   expect(JSON.stringify(GetAll)).toMatchSnapshot();
 });
 
-describe("<EditOne />", () => {
+describe("<GetAll />", () => {
   test("renders without crashing", () => {
     shallow(<GetAll getAll={clickFn} state={{ cats: { err2: "err" } }} />);
   });

@@ -4,7 +4,7 @@ import "../setup.js";
 
 import App from "../src/App";
 
-it('renders without crashing', () => {
+it("renders without crashing", () => {
   expect(JSON.stringify(App)).toMatchSnapshot();
 });
 

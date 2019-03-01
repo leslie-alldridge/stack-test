@@ -28,7 +28,7 @@ describe("<EditOne />", () => {
     });
   });
 
-  describe("<DeleteOne />", () => {
+  describe("<EditOne />", () => {
     it("responds to name change", () => {
       const handleChangeSpy = sinon.spy(EditOne.prototype, "handleChange");
       const event = { target: { name: "num", value: 2 } };
