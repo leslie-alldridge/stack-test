@@ -35,6 +35,7 @@
     "dev": "nodemon --watch server server/index & webpack --watch",
     "start": "node server/index",
     "test": "jest",
+    "build": "webpack",
     "test:coverage": "npm test -- --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges"
   },

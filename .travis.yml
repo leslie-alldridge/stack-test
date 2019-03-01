@@ -5,8 +5,10 @@ cache:
   directories:
     - node_modules
 script:
-  - npm test
+  - npm knex migrate:latest
+  - npm knex seed:run
   - npm run build
+  - npm test
 
 on:
   branch: master
