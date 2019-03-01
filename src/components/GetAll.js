@@ -3,18 +3,19 @@ import { connect } from "react-redux";
 import Loading from "./loading";
 import { getAllAction } from "../actions/getAll";
 
-class GetAll extends Component {
+export class GetAll extends Component {
   constructor(props) {
     super(props);
   }
+  componentWillMount() {
+    this.getAll = this.getAll.bind(this);
 
-  componentDidMount = () => {
     this.props.getAll();
-  };
+  }
 
-  getAll = () => {
+  getAll() {
     this.props.getAll();
-  };
+  }
 
   render() {
     return (
@@ -45,7 +46,7 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     getAll: () => dispatch(getAllAction())
   };
