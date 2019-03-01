@@ -1,5 +1,5 @@
 import React from "react";
-import SaveOne from "../../../src/components/SaveOne";
+import { SaveOne } from "../../../src/components/SaveOne";
 
 import { shallow, mount } from "enzyme";
 import "../../../setup.js";
@@ -17,16 +17,14 @@ describe("<SaveOne />", () => {
 
   it("works", () => {
     const wrap = shallow(<SaveOne />);
-    wrap.setState({ num: 1 });
-    expect(wrap.state("num")).toEqual(1);
+    wrap.setState({ name: "", age: "", location: "", error: false });
+    expect(wrap.state("error")).toEqual(false);
   });
 
   it("button click should run function", () => {
     beforeEach(() => {
       const component = mount(<SaveOne onClick={clickFn} />);
-      component
-        .findWhere(node => node.innerText === "Delete")
-        .simulate("click");
+      component.findWhere(node => node.innerText === "Save").simulate("click");
       expect(clickFn).toHaveBeenCalled();
     });
   });

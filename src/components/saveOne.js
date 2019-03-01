@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { saveOneAction } from "../actions/saveOne";
 
-class SaveOne extends Component {
+export class SaveOne extends Component {
   constructor(props) {
     super(props);
     this.state = {
