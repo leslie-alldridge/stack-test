@@ -12,6 +12,7 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0",
     "express": "^4.16.4",
+    "jest-coverage-badges": "^1.1.2",
     "knex": "^0.16.3",
     "nock": "^10.0.6",
     "nodemon": "^1.18.10",
@@ -33,7 +34,9 @@
   "scripts": {
     "dev": "nodemon --watch server server/index & webpack --watch",
     "start": "node server/index",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "npm test -- --coverage",
+    "test:badges": "npm run test:coverage  && jest-coverage-badges"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -56,6 +59,11 @@
   "jest": {
     "coveragePathIgnorePatterns": [
       "/db"
+    ],
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
     ]
   }
 }
