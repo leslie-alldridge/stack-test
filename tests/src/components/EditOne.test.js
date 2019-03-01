@@ -1,5 +1,5 @@
 import React from "react";
-import { EditOne } from "../../../src/components/EditOne";
+import { EditOne, mapDispatchToProps } from "../../../src/components/EditOne";
 
 import { shallow, mount } from "enzyme";
 import "../../../setup.js";
@@ -28,31 +28,6 @@ describe("<EditOne />", () => {
     });
   });
 
-  // it("button click should run function", () => {
-  //   beforeEach(() => {
-  //     const component = mount(
-  //       <EditOne onClick={clickFn} state={{ cats: { err2: "err" } }} />
-  //     );
-  //     component.findWhere(node => node.innerText === "Save").simulate("click");
-  //     expect(clickFn).toHaveBeenCalled();
-  //     expect(component.state()).toEqual({
-  //       id: 0,
-  //       name: "",
-  //       age: 0,
-  //       location: ""
-  //     });
-  //   });
-  // });
-
-  // describe("<DeleteOne />", () => {
-  //   it("responds to name change", () => {
-  //     const handleChangeSpy = sinon.spy(EditOne.prototype, "handleChange");
-  //     const event = { target: { name: "num", value: 2 } };
-  //     const wrap = mount(<EditOne />);
-  //     wrap.find("input").simulate("change", event);
-  //     expect(handleChangeSpy.calledOnce).toEqual(true);
-  //   });
-
   describe("<DeleteOne />", () => {
     it("responds to name change", () => {
       const handleChangeSpy = sinon.spy(EditOne.prototype, "handleChange");
@@ -78,6 +53,22 @@ describe("<EditOne />", () => {
         location: "",
         error: false
       });
+    });
+    describe("mapDispatchToProps", () => {
+      it("should dispatch actions.onClick() when onClick() is called", () => {
+        const dispatch = jest.fn();
+        const props = mapDispatchToProps(dispatch);
+        props.EditOne();
+        expect(dispatch.mock.calls.length).toBe(1);
+      });
+    });
+
+    describe("state error", () => {
+      const wrap = shallow(<EditOne state={{ cats: { err2: "err" } }} />);
+      wrap.setState({ id: 0, name: "", age: 0, location: "", error: true });
+      expect(
+        wrap.containsMatchingElement(<p>please fill out all details</p>)
+      ).toBeTruthy();
     });
   });
 });
