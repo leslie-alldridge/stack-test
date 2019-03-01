@@ -1,5 +1,5 @@
 import React from "react";
-import { SaveOne, mapDispatchToProps } from "../../../src/components/SaveOne";
+import { SaveOne, mapDispatchToProps } from "../../../src/components/saveOne";
 
 import { shallow, mount } from "enzyme";
 import "../../../setup.js";
