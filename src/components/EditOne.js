@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { editOneAction } from "../actions/editOne";
 
-class EditOne extends Component {
+export class EditOne extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +14,12 @@ class EditOne extends Component {
     };
   }
 
-  save = () => {
+  componentWillMount() {
+    this.save = this.save.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  save ()  {
     const { id, name, age, location } = this.state;
     this.props.EditOne(id, name, age, location);
     this.setState({
@@ -25,7 +30,7 @@ class EditOne extends Component {
     });
   };
 
-  handleChange = e => {
+  handleChange  (e)  {
     this.setState({
       [e.target.name]: e.target.value
     });

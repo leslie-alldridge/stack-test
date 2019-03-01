@@ -1,8 +1,9 @@
 import React from "react";
-import EditOne from "../../../src/components/EditOne";
+import {EditOne} from "../../../src/components/EditOne";
 
 import { shallow, mount } from "enzyme";
 import "../../../setup.js";
+import sinon from "sinon";
 
 const clickFn = jest.fn();
 
@@ -28,6 +29,24 @@ describe("<EditOne />", () => {
         .findWhere(node => node.innerText === "Delete")
         .simulate("click");
       expect(clickFn).toHaveBeenCalled();
+    });
+  });
+
+  describe("<DeleteOne />", () => {
+    it("responds to name change", () => {
+      const handleChangeSpy = sinon.spy(EditOne.prototype, "handleChange");
+      const event = { target: { name: "num", value: 2 } };
+      const wrap = mount(<EditOne />);
+      wrap.find("input").simulate("change", event);
+      expect(handleChangeSpy.calledOnce).toEqual(true);
+    });
+  
+    it("button click should run function", () => {
+      const EditOneSpy = sinon.spy(EditOne.prototype, "EditOne");
+      const event = { target: { name: "num", value: 2 } };
+      const wrap = mount(<EditOne EditOne={clickFn} />);
+      wrap.find("button").simulate("click", event);
+      expect(EditOneSpy.calledOnce).toEqual(true);
     });
   });
 });

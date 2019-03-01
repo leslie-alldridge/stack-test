@@ -1,11 +1,8 @@
 import React from "react";
-import DeleteContainer, { DeleteOne, mapDispatchToProps } from "../../../src/components/DeleteOne";
+import { DeleteOne, mapDispatchToProps } from "../../../src/components/DeleteOne";
 import { shallow, mount } from "enzyme";
-import {loading, deleteOneAction} from '../../../src/actions/deleteOne'
 import "../../../setup.js";
 import sinon from "sinon";
-import configureMockStore from 'redux-mock-store';
-const mockStore = configureMockStore();
 const clickFn = jest.fn();
 
 it("renders without crashing", () => {
