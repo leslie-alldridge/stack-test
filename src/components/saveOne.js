@@ -13,7 +13,12 @@ export class SaveOne extends Component {
     };
   }
 
-  save = () => {
+  componentWillMount() {
+    this.save = this.save.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  save() {
     const { name, age, location } = this.state;
     if (this.state.age === "") {
       this.setState({
@@ -36,13 +41,13 @@ export class SaveOne extends Component {
         location: ""
       });
     }
-  };
+  }
 
-  handleChange = e => {
+  handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     });
-  };
+  }
 
   render() {
     return (
@@ -52,6 +57,7 @@ export class SaveOne extends Component {
           <p style={{ color: "red" }}>please fill out all details</p>
         )}
         <input
+          className="testID"
           name="name"
           onChange={this.handleChange}
           type="text"
@@ -84,7 +90,7 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     SaveOne: (name, location, age) =>
       dispatch(saveOneAction(name, location, age))
