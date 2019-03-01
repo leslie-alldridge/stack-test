@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Loading from "./loading";
 import { getOneAction } from "../actions/getOne";
 
-class GetOne extends Component {
+export class GetOne extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,15 +11,20 @@ class GetOne extends Component {
     };
   }
 
-  getOne = () => {
-    this.props.getOne(this.state.num);
-  };
+  componentWillMount() {
+    this.getOne = this.getOne.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-  handleChange = e => {
+  getOne() {
+    this.props.getOne(this.state.num);
+  }
+
+  handleChange(e) {
     this.setState({
       num: e.target.value
     });
-  };
+  }
 
   render() {
     return (
@@ -54,7 +59,7 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     getOne: id => dispatch(getOneAction(id))
   };
