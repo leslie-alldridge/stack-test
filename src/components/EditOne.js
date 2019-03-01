@@ -19,7 +19,7 @@ export class EditOne extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  save ()  {
+  save() {
     const { id, name, age, location } = this.state;
     this.props.EditOne(id, name, age, location);
     this.setState({
@@ -28,13 +28,13 @@ export class EditOne extends Component {
       age: 0,
       location: ""
     });
-  };
+  }
 
-  handleChange  (e)  {
+  handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     });
-  };
+  }
 
   render() {
     return (
@@ -46,6 +46,7 @@ export class EditOne extends Component {
         <p style={{ color: "red" }}>{this.props.state.cats.err2}</p>
         <input
           name="id"
+          className="testID"
           onChange={this.handleChange}
           type="number"
           placeholder="id"
@@ -84,7 +85,7 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = dispatch => {
   return {
     EditOne: (id, name, location, age) =>
       dispatch(editOneAction(id, name, location, age))
