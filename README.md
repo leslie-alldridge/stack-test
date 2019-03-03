@@ -1,4 +1,4 @@
-App contains React, Redux (with thunk), Express, Knex and Axios. 
+App contains React, Redux (with thunk), Express, Knex, Jest, Enzyme, Supertest and Axios. 
 
 Coverage reports included below - 
 
